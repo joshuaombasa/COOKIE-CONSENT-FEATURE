@@ -44,4 +44,17 @@ modalForm.addEventListener("submit", function (e) {
                             </div>
                         `
     }, 3000)
+
+    setTimeout(function () {
+        modalEl.innerHTML =  
+                            `
+                                <h2>Thanks you for visiting Frontend Masters! </h2>
+                                <p>Enjoy your content.</p>
+            
+        ` 
+    }, 6000)
+
+    setTimeout(function () {
+        modalEl.style.display = 'none'
+    }, 7000)
 })
