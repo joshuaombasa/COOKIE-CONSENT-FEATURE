@@ -2,6 +2,8 @@ const modalEl = document.getElementById("modal")
 
 const modalCloseBtn = document.getElementById("modal-close-btn")
 
+const modalBtnContainer = document.getElementById("modal-btn-container")
+
 const submitBtn = document.getElementById("submit-btn")
 
 const modalForm = document.getElementById("modal-form")
@@ -9,6 +11,13 @@ const modalForm = document.getElementById("modal-form")
 const modalText = document.getElementById("modal-text")
 
 const modalInner = document.getElementById("modal-inner")
+
+const declineBtn = document.getElementById("decline-btn")
+
+declineBtn.addEventListener("mouseenter", function () {
+    console.log("hovered")
+    modalBtnContainer.classList.toggle('reverse')
+})
 
 
 setTimeout(function () {
@@ -22,7 +31,12 @@ modalCloseBtn.addEventListener("click", function () {
 
 
 modalForm.addEventListener("submit", function (e) {
+    const userInfo = new FormData(modalForm)
+    let name = userInfo.get('fullName')
+    console.log(name)
+    // console.log(userInfo)
     e.preventDefault()
+    modalForm.style.display = 'none'
     modalText.innerHTML = 
                         `
                             <div class="modal-inner-loading">
@@ -46,15 +60,16 @@ modalForm.addEventListener("submit", function (e) {
     }, 3000)
 
     setTimeout(function () {
-        modalEl.innerHTML =  
+        document.getElementById('modal-inner').innerHTML =  
                             `
-                                <h2>Thanks you for visiting Frontend Masters! </h2>
+                                <h2>Thanks you <span class="name-styling">${name}</span> for visiting Frontend Masters! </h2>
                                 <p>Enjoy your content.</p>
-            
-        ` 
+                            `
+                            modalCloseBtn.disabled = false   
+        
     }, 6000)
 
     setTimeout(function () {
         modalEl.style.display = 'none'
-    }, 7000)
+    }, 9000)
 })
