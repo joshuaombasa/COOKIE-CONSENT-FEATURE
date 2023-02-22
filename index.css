@@ -102,3 +102,16 @@ input {
     margin-top: 10px;
 }
 
+.name-styling {
+    color: #fff;
+}
+
+.modal-btn-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.reverse {
+    flex-direction: row-reverse;
+}
